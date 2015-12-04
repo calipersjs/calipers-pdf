@@ -1,6 +1,6 @@
 {
   "name": "calipers-pdf",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "PDF plugin for calipers.",
   "main": "lib/index.js",
   "scripts": {
@@ -36,5 +36,8 @@
   "dependencies": {
     "bluebird": "3.x.x",
     "poppler-simple": "0.2.x"
+  },
+  "peerDependencies": {
+    "calipers": "2.x.x"
   }
 }
