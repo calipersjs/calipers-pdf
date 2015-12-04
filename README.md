@@ -1,6 +1,6 @@
 #calipers-pdf
 
-[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) [![Build Status](https://travis-ci.org/calipersjs/calipers-pdf.svg)](https://travis-ci.org/calipersjs/calipers-pdf) [![Coverage Status](https://coveralls.io/repos/calipersjs/calipers-pdf/badge.svg)](https://coveralls.io/r/calipersjs/calipers-pdf)
+[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) [![Build Status](https://travis-ci.org/calipersjs/calipers-pdf.svg?branch=master)](https://travis-ci.org/calipersjs/calipers-pdf) [![Coverage Status](https://coveralls.io/repos/calipersjs/calipers-pdf/badge.svg)](https://coveralls.io/r/calipersjs/calipers-pdf)
 
 PDF Plugin for [Calipers](https://github.com/calipersjs/calipers).
 
