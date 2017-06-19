@@ -1,5 +1,7 @@
 'use strict';
 
-var chai = require('chai');
+var Chai = require('chai');
 
-chai.use(require('chai-as-promised'));
+Chai.use(require('chai-as-promised'));
+
+global.expect = Chai.expect;
