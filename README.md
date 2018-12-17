@@ -2,7 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) [![Build Status](https://travis-ci.org/calipersjs/calipers-pdf.svg?branch=master)](https://travis-ci.org/calipersjs/calipers-pdf)
 
-PDF Plugin for [Calipers](https://github.com/calipersjs/calipers).
+PDF Plugin for [Calipers](https://github.com/calipersjs/calipers). It can be
+used to measure the page dimensions of a PDF and to check whether or not a PDF
+is encrypted (password-protected).
 
 # Installation
 
@@ -21,15 +23,76 @@ apt-get install pkg-config
 apt-get install libpoppler-cpp-dev
 ```
 
-To use, install calipers and calipers-pdf via NPM:
+To use, install calipers and calipers-pdf via yarn:
 
 ```
-npm install calipers calipers-pdf
+yarn add calipers calipers-pdf
 ```
 
 # Usage
 
-Please see the [Calipers README](https://github.com/calipersjs/calipers) for documentation.
+Calipers must be initialized by calling the required function with supported
+file types passed in, in this case `'pdf'`.
+
+```javascript
+// Initializes Calipers with support for calipers-pdf.
+var Calipers = require('calipers')('pdf');
+```
+
+Calipers exposes a single function, `measure`, once initialized.
+
+### `measure(filePath, [callback])`
+
+Measures the file at the given path.
+- `filePath` - The path of the file.
+- `callback` - called when the file has been measured
+  - `err` - An Error is provided for unsupported file types or corrupt files.
+  - `result` - Contains the following keys:
+    - `type` - a string representing the file type (e.g. `'pdf'`)
+    - `encrypted` - a boolean which is true if the PDF is encryted, false otherwise
+    - `pages` - an array of objects with keys `width` and `height` which values
+      are floating-point PostScript Point dimensions
+
+# Examples
+
+```js
+var Calipers = require('calipers')('pdf');
+
+// You can use a callback:
+Calipers.measure('/path/to/document.pdf', function (err, result) {
+  // result:
+  // {
+  //   type: 'pdf',
+  //   encrypted: false,
+  //   pages: [
+  //     {
+  //       width: 450,
+  //       height: 670
+  //     },
+  //     {
+  //       width: 450,
+  //       height: 670
+  //     }
+  //   ]
+  // }
+});
+
+// Or you can use promises:
+Calipers.measure('/path/to/file.pdf')
+.then(function (result) {
+  // result:
+  // {
+  //   type: 'pdf',
+  //   encrypted: false,
+  //   pages: [
+  //     {
+  //       width: 450,
+  //       height: 670
+  //     }
+  //   ]
+  // }
+});
+```
 
 # Issues/Bugs
 

@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "bluebird": "3.x.x",
-    "poppler-simple": "0.2.x"
+    "poppler-simple": "0.6.1"
   },
   "peerDependencies": {
     "calipers": "2.x.x"

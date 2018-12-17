@@ -34,6 +34,7 @@ describe('pdf', function () {
 
       var expectedOutput = {
         type: 'pdf',
+        encrypted: false,
         pages: []
       };
       for (var i = 0; i < pages; i++) {
@@ -55,13 +56,21 @@ describe('pdf', function () {
     });
 
     it('should error with a corrupt PDF', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/corrupt/corrupt.pdf');
+      var pdfPath = path.resolve(__dirname, 'fixtures/corrupt.pdf');
       return expect(pdf.measure(pdfPath)).to.be.rejectedWith(Error);
     });
 
     it('should error with a PDF with no pages', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/corrupt/no_pages.pdf');
+      var pdfPath = path.resolve(__dirname, 'fixtures/no_pages.pdf');
       return expect(pdf.measure(pdfPath)).to.be.rejectedWith(Error);
+    });
+
+    it('should identify an encrypted PDF', function () {
+      var pdfPath = path.resolve(__dirname, 'fixtures/encrypted.pdf');
+      return pdf.measure(pdfPath)
+      .then(function (result) {
+        expect(result.encrypted).to.be.true;
+      });
     });
 
   });
