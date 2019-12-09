@@ -18,5 +18,5 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - libpoppler-cpp-dev
-    - libpoppler-dev
+    - libpoppler-private-dev
     - g++-4.9
