@@ -6,8 +6,7 @@ node_js:
   - '12'
   - '10'
   - '8'
-before_install:
-  - travis cache --delete
+cache: false
 script:
   - npm test
   - npm run enforce
