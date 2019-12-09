@@ -8,6 +8,7 @@ node_js:
   - '8'
 cache: false
 script:
+  - cat ./node_modules/poppler-simple/package.json
   - yarn test
   - yarn run enforce
   - yarn run lint
