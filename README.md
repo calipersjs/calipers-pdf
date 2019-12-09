@@ -101,3 +101,4 @@ Please report any issues in the [core Calipers repository](https://github.com/ca
 # Contribute
 
 The easiest and most helpful way to contribute is to find a file that calipers incorrectly measures, and submit a PR with the file. The tests automatically run against all files in the `test/fixtures` directory, so simply drop it into the appropriate subdirectory, and name it according to its size `<width>x<height>x<pages>.pdf`.
+
