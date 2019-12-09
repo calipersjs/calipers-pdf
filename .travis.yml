@@ -2,18 +2,15 @@ language: node_js
 sudo: false
 env:
   - CXX=g++-4.9
-  - FOO=1 BAR=2
-  - FOO=1  BAR=2
-  - BAR=2 FOO=1
 node_js:
   - '12.13.1'
   - '10'
   - '8'
 cache: false
 script:
-  - npm test
-  - npm run enforce
-  - npm run lint
+  - yarn test
+  - yarn run enforce
+  - yarn run lint
 addons:
   apt:
     sources:
