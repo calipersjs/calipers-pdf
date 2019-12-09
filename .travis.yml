@@ -6,7 +6,7 @@ env:
   - FOO=1  BAR=2
   - BAR=2 FOO=1
 node_js:
-  - '12'
+  - '12.13.1'
   - '10'
   - '8'
 cache: false
