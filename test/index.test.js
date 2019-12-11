@@ -1,52 +1,54 @@
 'use strict';
 
-var fs     = require('fs');
-var path   = require('path');
-var expect = require('chai').expect;
-var pdf   = require('../lib/index');
+const expect = require('chai').expect;
+const fs     = require('fs');
+const path   = require('path');
+const pdf    = require('../lib/index');
 
-describe('pdf', function () {
+describe('pdf', () => {
 
-  describe('detect', function () {
-    it('should return true for a PDF', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/pdf/123x456.1.pdf');
-      var result = pdf.detect(fs.readFileSync(pdfPath));
+  describe('detect', () => {
+
+    it('should return true for a PDF', () => {
+      const pdfPath = path.resolve(__dirname, 'fixtures/pdf/123x456.1.pdf');
+      const result = pdf.detect(fs.readFileSync(pdfPath));
       expect(result).to.eql(true);
     });
 
-    it('should return false for a non-PDF', function () {
-      var pngPath = path.resolve(__dirname, 'fixtures/png/123x456.png');
-      var result = pdf.detect(fs.readFileSync(pngPath));
+    it('should return false for a non-PDF', () => {
+      const pngPath = path.resolve(__dirname, 'fixtures/png/123x456.png');
+      const result = pdf.detect(fs.readFileSync(pngPath));
       expect(result).to.eql(false);
     });
+
   });
 
-  describe('measure', function () {
+  describe('measure', () => {
 
-    var fixtures = path.resolve(__dirname, 'fixtures/pdf');
-    var files = fs.readdirSync(fixtures);
+    const fixtures = path.resolve(__dirname, 'fixtures/pdf');
+    const files = fs.readdirSync(fixtures);
 
-    files.forEach(function (file) {
-      var fileSplit = file.split(/x|\./);
-      var width = parseInt(fileSplit[0]);
-      var height = parseInt(fileSplit[1]);
-      var pages = parseInt(fileSplit[2]);
+    files.forEach((file) => {
+      const fileSplit = file.split(/x|\./);
+      const width = parseInt(fileSplit[0]);
+      const height = parseInt(fileSplit[1]);
+      const pages = parseInt(fileSplit[2]);
 
-      var expectedOutput = {
+      const expectedOutput = {
         type: 'pdf',
         encrypted: false,
         pages: []
       };
-      for (var i = 0; i < pages; i++) {
-        expectedOutput.pages[i] = { width: width, height: height };
+      for (let i = 0; i < pages; i++) {
+        expectedOutput.pages[i] = { width, height };
       }
 
-      it('should return the correct dimensions for ' + file, function () {
-        var pdfPath = path.resolve(fixtures, file);
+      it(`should return the correct dimensions for ${  file}`, () => {
+        const pdfPath = path.resolve(fixtures, file);
         return pdf.measure(pdfPath)
         .bind({})
-        .then(function (result) {
-          for (var i = 0; i < result.pages.length; i++) {
+        .then((result) => {
+          for (let i = 0; i < result.pages.length; i++) {
             result.pages[i].width = Math.round(result.pages[i].width);
             result.pages[i].height = Math.round(result.pages[i].height);
           }
@@ -55,20 +57,20 @@ describe('pdf', function () {
       });
     });
 
-    it('should error with a corrupt PDF', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/corrupt.pdf');
+    it('should error with a corrupt PDF', () => {
+      const pdfPath = path.resolve(__dirname, 'fixtures/corrupt.pdf');
       return expect(pdf.measure(pdfPath)).to.be.rejectedWith(Error);
     });
 
-    it('should error with a PDF with no pages', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/no_pages.pdf');
+    it('should error with a PDF with no pages', () => {
+      const pdfPath = path.resolve(__dirname, 'fixtures/no_pages.pdf');
       return expect(pdf.measure(pdfPath)).to.be.rejectedWith(Error);
     });
 
-    it('should identify an encrypted PDF', function () {
-      var pdfPath = path.resolve(__dirname, 'fixtures/encrypted.pdf');
+    it('should identify an encrypted PDF', () => {
+      const pdfPath = path.resolve(__dirname, 'fixtures/encrypted.pdf');
       return pdf.measure(pdfPath)
-      .then(function (result) {
+      .then((result) => {
         expect(result.encrypted).to.be.true;
       });
     });

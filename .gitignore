@@ -28,5 +28,4 @@ node_modules
 .lock-wscript
 
 .vimrc
-yarn.lock
 build/
