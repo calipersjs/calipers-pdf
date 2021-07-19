@@ -46,14 +46,14 @@ describe('pdf', () => {
       it(`should return the correct dimensions for ${  file}`, () => {
         const pdfPath = path.resolve(fixtures, file);
         return pdf.measure(pdfPath)
-        .bind({})
-        .then((result) => {
-          for (let i = 0; i < result.pages.length; i++) {
-            result.pages[i].width = Math.round(result.pages[i].width);
-            result.pages[i].height = Math.round(result.pages[i].height);
-          }
-          expect(result).to.eql(expectedOutput);
-        });
+          .bind({})
+          .then((result) => {
+            for (let i = 0; i < result.pages.length; i++) {
+              result.pages[i].width = Math.round(result.pages[i].width);
+              result.pages[i].height = Math.round(result.pages[i].height);
+            }
+            expect(result).to.eql(expectedOutput);
+          });
       });
     });
 
@@ -70,9 +70,9 @@ describe('pdf', () => {
     it('should identify an encrypted PDF', () => {
       const pdfPath = path.resolve(__dirname, 'fixtures/encrypted.pdf');
       return pdf.measure(pdfPath)
-      .then((result) => {
-        expect(result.encrypted).to.be.true;
-      });
+        .then((result) => {
+          expect(result.encrypted).to.be.true;
+        });
     });
 
   });

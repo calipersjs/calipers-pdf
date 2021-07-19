@@ -1,5 +1,9 @@
 ## Change Log
 
+**2.2.1** — _July 20, 2021_ — [Diff](https://github.com/calipersjs/calipers-pdf/compare/2.2.0...2.2.1)
+
+* Upgrade poppler-simple to 0.10.1
+
 **2.2.0** — _December 11, 2019_ — [Diff](https://github.com/calipersjs/calipers-pdf/compare/2.1.0...2.2.0)
 
 * Upgrade poppler-simple to 0.8.0

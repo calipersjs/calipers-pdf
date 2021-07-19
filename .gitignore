@@ -29,3 +29,6 @@ node_modules
 
 .vimrc
 build/
+
+#repo represents an npm package and npm packages ignore such lock files
+package-lock.json

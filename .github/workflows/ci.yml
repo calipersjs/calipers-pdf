@@ -1,0 +1,49 @@
+name: "calipers-pdf"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    # Run the same tests suite for node 12, 14, 16
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: |
+          sudo apt-get -y install \
+            libpoppler-cpp-dev \
+            libpoppler-private-dev \
+            g++
+
+      # Setup this version of Node
+      # Cache is saved and restored by actions/setup-node
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Enforce test coverage
+        run: npm run enforce
+
+      - name: Run lint
+        run: npm run lint
