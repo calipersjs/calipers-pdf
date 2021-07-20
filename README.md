@@ -1,6 +1,6 @@
 # calipers-pdf
 
-[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) ![Build Status](https://github.com/calipersjs/calipers-pdf/actions/workflows/main.yml/badge.svg?branch=master)
+[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) ![Build Status](https://github.com/calipersjs/calipers-pdf/actions/workflows/ci.yml/badge.svg?branch=master)
 
 
 PDF Plugin for [Calipers](https://github.com/calipersjs/calipers). It can be
