@@ -1,6 +1,7 @@
-#calipers-pdf
+# calipers-pdf
 
-[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) [![Build Status](https://travis-ci.org/calipersjs/calipers-pdf.svg?branch=master)](https://travis-ci.org/calipersjs/calipers-pdf)
+[![npm version](https://badge.fury.io/js/calipers-pdf.svg)](http://badge.fury.io/js/calipers-pdf) ![Build Status](https://github.com/calipersjs/calipers-pdf/actions/workflows/main.yml/badge.svg?branch=master)
+
 
 PDF Plugin for [Calipers](https://github.com/calipersjs/calipers). It can be
 used to measure the page dimensions of a PDF and to check whether or not a PDF
@@ -23,10 +24,10 @@ apt-get install pkg-config
 apt-get install libpoppler-cpp-dev
 ```
 
-To use, install calipers and calipers-pdf via yarn:
+To use, install calipers and calipers-pdf via npm:
 
 ```
-yarn add calipers calipers-pdf
+npm install calipers calipers-pdf
 ```
 
 # Usage
