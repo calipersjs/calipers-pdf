@@ -46,7 +46,6 @@ describe('pdf', () => {
       it(`should return the correct dimensions for ${  file}`, () => {
         const pdfPath = path.resolve(fixtures, file);
         return pdf.measure(pdfPath)
-          .bind({})
           .then((result) => {
             for (let i = 0; i < result.pages.length; i++) {
               result.pages[i].width = Math.round(result.pages[i].width);
