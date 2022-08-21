@@ -43,17 +43,14 @@ describe('pdf', () => {
         expectedOutput.pages[i] = { width, height };
       }
 
-      it(`should return the correct dimensions for ${  file}`, () => {
+      it(`should return the correct dimensions for ${  file}`, async () => {
         const pdfPath = path.resolve(fixtures, file);
-        return pdf.measure(pdfPath)
-          .bind({})
-          .then((result) => {
-            for (let i = 0; i < result.pages.length; i++) {
-              result.pages[i].width = Math.round(result.pages[i].width);
-              result.pages[i].height = Math.round(result.pages[i].height);
-            }
-            expect(result).to.eql(expectedOutput);
-          });
+        const measurement = await pdf.measure(pdfPath);
+        for (let i = 0; i < measurement.pages.length; i++) {
+          measurement.pages[i].width = Math.round(measurement.pages[i].width);
+          measurement.pages[i].height = Math.round(measurement.pages[i].height);
+        }
+        expect(measurement).to.eql(expectedOutput);
       });
     });
 
@@ -67,12 +64,11 @@ describe('pdf', () => {
       return expect(pdf.measure(pdfPath)).to.be.rejectedWith(Error);
     });
 
-    it('should identify an encrypted PDF', () => {
+    it('should identify an encrypted PDF', async () => {
       const pdfPath = path.resolve(__dirname, 'fixtures/encrypted.pdf');
-      return pdf.measure(pdfPath)
-        .then((result) => {
-          expect(result.encrypted).to.be.true;
-        });
+      const result = await pdf.measure(pdfPath);
+      expect(result.encrypted).to.be.true;
+
     });
 
   });

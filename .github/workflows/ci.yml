@@ -3,20 +3,20 @@ name: "calipers-pdf"
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   ci:
     name: Build & Test
     runs-on: ubuntu-latest
 
-    # Run the same tests suite for node 12, 14, 16
+    # Run the same tests suite for node 12, 14, 16, 18
     strategy:
       matrix:
-        node-version: [12, 14, 16]
+        node-version: [12, 14, 16, 18]
 
     steps:
       - name: Checkout repository
