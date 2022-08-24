@@ -1,6 +1,6 @@
 {
   "name": "calipers-pdf",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "PDF plugin for calipers.",
   "main": "lib/index.js",
   "scripts": {
