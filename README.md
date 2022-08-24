@@ -93,6 +93,22 @@ Calipers.measure('/path/to/file.pdf')
   //   ]
   // }
 });
+
+// Or you can use async/await
+
+const result = awawit Calipers.measure('/path/to/file.pdf')
+  // result:
+  // {
+  //   type: 'pdf',
+  //   encrypted: false,
+  //   pages: [
+  //     {
+  //       width: 450,
+  //       height: 670
+  //     }
+  //   ]
+  // }
+  
 ```
 
 # Issues/Bugs
